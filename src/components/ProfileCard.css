@@ -16,16 +16,4 @@
   height: 300px;
 }
 
-button {
-  font: normal normal bold 14px sans-serif;
-  padding: 10px 20px;
-  margin: 10px;
-  color: white;
-  border-radius: 4px;
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-  background-color: #194b92;
-  text-decoration: none;
-  border: transparent;
-  cursor: pointer;
-  outline: none;
-}
+
