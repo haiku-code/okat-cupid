@@ -54,3 +54,18 @@ input {
   padding: 8px;
   outline: none;
 }
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.clear-button {
+  position: relative;
+}
+
+.clear-button i {
+  position: absolute;
+  top: -6px;
+  right: 15px;
+  font-size: 1.5rem;
+}

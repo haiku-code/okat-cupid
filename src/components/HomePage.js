@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import Grid from './Grid';
 import ProfileCard from './ProfileCard';
 import {useFormInput} from '../hooks/useFormInput.hook';
@@ -13,9 +13,21 @@ const HomePage = ({cats}) => {
     return c.name.toLocaleLowerCase().includes(value) || c.description.toLocaleLowerCase().includes(textFilter.value)
   });
 
+  const clearFilter = useCallback(() => {
+    textFilter.onChange('');
+  }, [textFilter]);
+
   return (
     <>
-      <b>Search: </b><input {...textFilter}/>
+      <p>
+        <b>Search: </b><input {...textFilter}/>
+        {
+          (textFilter.value) &&
+          <span className="clear-button">
+            <i className="material-icons cursor-pointer" onClick={clearFilter}>clear</i>
+          </span>
+        }
+      </p>
       <Grid.Container>
         {
           filteredCats.map((c) => (
