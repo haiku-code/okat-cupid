@@ -1,0 +1,22 @@
+.Header-logo {
+  cursor: pointer;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .Header-logo {
+    animation: Header-logo-spin infinite 20s linear;
+  }
+}
+
+.Header {
+  background-color: #194b92;
+  position: sticky;
+  top: 0;
+  display: flex;
+  padding: 20px;
+  align-items: center;
+  justify-content: space-between;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
+}

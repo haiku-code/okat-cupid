@@ -1,0 +1,16 @@
+.flex-grid {
+  display: flex;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  width: calc(100% + 24px);
+  margin: -12px;
+}
+
+.flex-col {
+  max-width: 50%;
+  flex-basis: 50%;
+  flex-grow: 0;
+  box-sizing: border-box;
+  padding: 12px;
+  margin: 0;
+}
