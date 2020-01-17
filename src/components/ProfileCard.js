@@ -3,6 +3,18 @@ import {Link as RouterLink} from 'react-router-dom';
 import './ProfileCard.css';
 
 const ProfileCard = ({imgSrc, id, name, age, description, short = false}) => {
+  const CardActionButton =  (
+    (short && id)
+      ?
+      <RouterLink to={`/profile/${id}`}>
+        <button>See full profile</button>
+      </RouterLink>
+      :
+      <RouterLink to="/">
+        <button>Back</button>
+      </RouterLink>
+  );
+
   return (
     <div className="Card">
       <div className="Card-content">
@@ -17,7 +29,7 @@ const ProfileCard = ({imgSrc, id, name, age, description, short = false}) => {
             {name}
           </p>
           <p>
-            {(short) ? description.substr(0, 60) + '...' : description}
+            {(short) ? description.substr(0, 50) + '...' : description}
           </p>
           {!short && age &&
           <p>
@@ -27,14 +39,7 @@ const ProfileCard = ({imgSrc, id, name, age, description, short = false}) => {
         </div>
       </div>
       <div>
-        {
-          short && id &&
-          <RouterLink to={`/profile/${id}`}>
-            <button>
-              See full profile
-            </button>
-          </RouterLink>
-        }
+        {CardActionButton}
       </div>
     </div>
   )
