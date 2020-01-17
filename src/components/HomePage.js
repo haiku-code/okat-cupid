@@ -3,7 +3,6 @@ import Grid from './Grid';
 import ProfileCard from './ProfileCard';
 
 const HomePage = ({cats}) => {
-  console.log('== log1 ==', cats);
   // see: https://facebook.github.io/create-react-app/docs/using-the-public-folder
   return (
     <Grid.Container>
