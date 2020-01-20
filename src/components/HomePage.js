@@ -2,11 +2,13 @@ import React, {useCallback} from 'react';
 import Grid from './Grid';
 import ProfileCard from './ProfileCard';
 import {useFormInput} from '../hooks/useFormInput.hook';
+import {useStore} from '../store/storeConfig';
 
-const HomePage = ({cats}) => {
+const HomePage = () => {
+  const store = useStore();
   // see: https://facebook.github.io/create-react-app/docs/using-the-public-folder
   const textFilter = useFormInput('');
-  const filteredCats = cats.filter(c => {
+  const filteredCats = store.cats.filter(c => {
     // get text filter value in lower case
     const value = textFilter.value.toString().toLocaleLowerCase();
     // compare filter to name and description

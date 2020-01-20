@@ -2,11 +2,10 @@ import React from 'react'
 import RootStore from './root.store';
 
 const store = new RootStore();
-const storeContext = React.createContext(store);  // store as default value
+const storeContext = React.createContext(null);
 
 export const StoreProvider = ({children}) => {
-  // if value not provided to storeContext - it will use the default value
-  return <storeContext.Provider>{children}</storeContext.Provider>
+  return <storeContext.Provider value={store}>{children}</storeContext.Provider>
 };
 
 
@@ -18,3 +17,8 @@ export const useStore = () => {
   }
   return store
 };
+
+
+if(process.env.NODE_ENV === 'development') {
+  window['store'] = store;
+}
