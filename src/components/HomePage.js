@@ -3,6 +3,7 @@ import Grid from './Grid';
 import ProfileCard from './ProfileCard';
 import {useFormInput} from '../hooks/useFormInput.hook';
 import {useStore} from '../store/storeConfig';
+import {observer} from 'mobx-react-lite';
 
 const HomePage = () => {
   const store = useStore();
@@ -47,4 +48,4 @@ const HomePage = () => {
   )
 };
 
-export default HomePage;
+export default observer(HomePage);

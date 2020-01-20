@@ -2,6 +2,7 @@ import React from 'react';
 import ProfileCard from './ProfileCard';
 import {withRouter} from 'react-router-dom';
 import {useStore} from '../store/storeConfig';
+import {observer} from 'mobx-react-lite';
 
 
 const ProfilePage = ({match}) => {
@@ -18,4 +19,4 @@ const ProfilePage = ({match}) => {
     )
 };
 
-export default withRouter(ProfilePage)
+export default observer(withRouter(ProfilePage));
