@@ -5,6 +5,7 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import HomePage from './components/HomePage';
 import ProfilePage from './components/ProfilePage';
 import {fetchCats} from './services/data.service';
+import {StoreProvider} from './store/storeConfig';
 
 const App = () => {
   const [cats, setCats] = useState([]);
@@ -20,18 +21,20 @@ const App = () => {
   };
 
   return (
-    <Router>
-      <div className="App">
-        <Header/>
-        <main className="App-main">
-          <Switch>
-            <Route path="/profile/:id" render={() => <ProfilePage getCat={getCat}/>}/>
-            <Route path="/" render={() => <HomePage cats={cats}/>}/>
-            <Route render={() => 'Page not found'}/>
-          </Switch>
-        </main>
-      </div>
-    </Router>
+    <StoreProvider>
+      <Router>
+        <div className="App">
+          <Header/>
+          <main className="App-main">
+            <Switch>
+              <Route path="/profile/:id" render={() => <ProfilePage getCat={getCat}/>}/>
+              <Route path="/" render={() => <HomePage cats={cats}/>}/>
+              <Route render={() => 'Page not found'}/>
+            </Switch>
+          </main>
+        </div>
+      </Router>
+    </StoreProvider>
   );
 };
 
