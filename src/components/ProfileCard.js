@@ -2,7 +2,7 @@ import React from 'react';
 import {Link as RouterLink} from 'react-router-dom';
 import './ProfileCard.css';
 
-const ProfileCard = ({imgSrc, id, name, age, description, short = false}) => {
+const ProfileCard = ({imgSrc, id, name, age, description, toggleFavorite, short = false, favorite = false}) => {
   const CardActionButton =  (
     (short && id)
       ?
@@ -40,6 +40,9 @@ const ProfileCard = ({imgSrc, id, name, age, description, short = false}) => {
       </div>
       <div>
         {CardActionButton}
+        <span className="favorite-button">
+          <i className="material-icons cursor-pointer" onClick={toggleFavorite}>{favorite ? 'star' : 'star_border'}</i>
+        </span>
       </div>
     </div>
   )

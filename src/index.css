@@ -69,3 +69,9 @@ input {
   right: 15px;
   font-size: 1.5rem;
 }
+
+.favorite-button i {
+  font-size: 2rem;
+  transform: translate(0, 14px);
+  color: #f0c21c;
+}

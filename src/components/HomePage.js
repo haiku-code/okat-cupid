@@ -20,6 +20,10 @@ const HomePage = () => {
     textFilter.onChange('');
   }, [textFilter]);
 
+  const toggleFavorite = useCallback((id) => {
+    store.toggleCatFavorite(id);
+  }, [store]);
+
   return (
     <>
       <p>
@@ -39,6 +43,8 @@ const HomePage = () => {
                            id={c.id}
                            name={c.name}
                            description={c.description}
+                           favorite={c.favorite}
+                           toggleFavorite={toggleFavorite.bind(null, c.id)}
                            short={true}/>
             </Grid.Item>
           ))
