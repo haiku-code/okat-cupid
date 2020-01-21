@@ -1,16 +1,22 @@
 import {action, computed, decorate, observable} from 'mobx';
 import {fetchCats} from '../services/data.service';
+import autoSave from './autoSave';
 
 class RootStore {
   cats = [];
   favoriteMode = false;
 
   constructor() {
+    // save to / get from local storage
+    autoSave(this);
+
     // init store
-    fetchCats().then(data => {
-      data.forEach(c => c.favorite = false);
-      this.cats = data
-    });
+    if(this.cats.length === 0) {
+      fetchCats().then(data => {
+        data.forEach(c => c.favorite = false);
+        this.cats = data
+      });
+    }
   }
 
   get displayAbleCats() {
