@@ -1,8 +1,9 @@
-import {action, decorate, observable} from 'mobx';
+import {action, computed, decorate, observable} from 'mobx';
 import {fetchCats} from '../services/data.service';
 
 class RootStore {
   cats = [];
+  favoriteMode = false;
 
   constructor() {
     // init store
@@ -12,8 +13,16 @@ class RootStore {
     });
   }
 
+  get displayAbleCats() {
+    return this.favoriteMode ? this.cats.filter(c => c.favorite) : this.cats;
+  }
+
   getCat = (id) => {
     return this.cats.find(c => c.id === id);
+  };
+
+  toggleFavoriteMode = () => {
+    this.favoriteMode = !this.favoriteMode;
   };
 
   toggleCatFavorite = (id) => {
@@ -24,5 +33,8 @@ class RootStore {
 
 export default decorate(RootStore, {
   cats: observable,
+  favoriteMode: observable,
+  displayAbleCats: computed,
   toggleCatFavorite: action,
+  toggleFavoriteMode: action,
 });

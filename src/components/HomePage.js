@@ -9,7 +9,7 @@ const HomePage = () => {
   const store = useStore();
   // see: https://facebook.github.io/create-react-app/docs/using-the-public-folder
   const textFilter = useFormInput('');
-  const filteredCats = store.cats.filter(c => {
+  const filteredCats = store.displayAbleCats.filter(c => {
     // get text filter value in lower case
     const value = textFilter.value.toString().toLocaleLowerCase();
     // compare filter to name and description
@@ -24,6 +24,10 @@ const HomePage = () => {
     store.toggleCatFavorite(id);
   }, [store]);
 
+  const toggleFavoriteMode = useCallback(() => {
+    store.toggleFavoriteMode();
+  }, [store]);
+
   return (
     <>
       <p>
@@ -34,6 +38,9 @@ const HomePage = () => {
             <i className="material-icons cursor-pointer" onClick={clearFilter}>clear</i>
           </span>
         }
+        <span className="favorite-button">
+          <i className="material-icons cursor-pointer" onClick={toggleFavoriteMode}>{store.favoriteMode ? 'star' : 'star_border'}</i>
+        </span>
       </p>
       <Grid.Container>
         {
