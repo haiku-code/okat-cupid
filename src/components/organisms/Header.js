@@ -1,15 +1,15 @@
 import React from 'react';
 import './Header.css';
-import logo from '../assets/okat_logo.jpg';
-import {NavLink} from 'react-router-dom';
+import logo from '../../assets/okat_logo.jpg';
+import {Link} from '../atoms';
 
 const Header = () => {
   return (
     <header className="Header">
       <img src={logo} className="Header-logo" alt="logo"/>
-      <NavLink exact to="/" className="nav-link" activeClassName="nav-link-active">
+      <Link exact={true} to="/">
         Home
-      </NavLink>
+      </Link>
     </header>
   )
 };

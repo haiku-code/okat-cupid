@@ -1,9 +1,9 @@
 import React from 'react';
 import './App.css';
-import Header from './components/Header';
+import Header from './components/organisms/Header';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import HomePage from './components/HomePage';
-import ProfilePage from './components/ProfilePage';
+import HomePage from './pages/HomePage';
+import ProfilePage from './pages/ProfilePage';
 import {StoreProvider} from './store/storeConfig';
 
 const App = () => {

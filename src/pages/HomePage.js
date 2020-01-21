@@ -1,9 +1,11 @@
 import React, {useCallback} from 'react';
-import Grid from './Grid';
-import ProfileCard from './ProfileCard';
+import Grid from '../components/atoms/Grid';
+import ProfileCard from '../components/organisms/ProfileCard';
 import {useFormInput} from '../hooks/useFormInput.hook';
 import {useStore} from '../store/storeConfig';
 import {observer} from 'mobx-react-lite';
+import IconButton from '../components/atoms/IconButton';
+import Searchbox from '../components/molecules/Searchbox';
 
 const HomePage = () => {
   const store = useStore();
@@ -31,16 +33,15 @@ const HomePage = () => {
   return (
     <>
       <p>
-        <b>Search: </b><input {...textFilter}/>
+        <b>Search: </b>
+        <Searchbox textProps={textFilter} clear={clearFilter}/>
         {
-          (textFilter.value) &&
-          <span className="clear-button">
-            <i className="material-icons cursor-pointer" onClick={clearFilter}>clear</i>
-          </span>
+          <IconButton.Toggle onClick={toggleFavoriteMode}
+                             isOn={store.favoriteMode}
+                             onClass="star"
+                             OffClass="star_border"
+                             wrapperClass="favorite-button"/>
         }
-        <span className="favorite-button">
-          <i className="material-icons cursor-pointer" onClick={toggleFavoriteMode}>{store.favoriteMode ? 'star' : 'star_border'}</i>
-        </span>
       </p>
       <Grid.Container>
         {

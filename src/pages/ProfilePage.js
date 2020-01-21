@@ -1,5 +1,5 @@
 import React, {useCallback} from 'react';
-import ProfileCard from './ProfileCard';
+import ProfileCard from '../components/organisms/ProfileCard';
 import {withRouter} from 'react-router-dom';
 import {useStore} from '../store/storeConfig';
 import {observer} from 'mobx-react-lite';

@@ -1,0 +1,12 @@
+.nav-link {
+  color: lightgray;
+}
+
+.nav-link:hover {
+  color: white;
+}
+
+.nav-link.nav-link-active {
+  color: gold;
+}
+

@@ -1,17 +1,19 @@
 import React from 'react';
 import {Link as RouterLink} from 'react-router-dom';
 import './ProfileCard.css';
+import {Button} from '../atoms';
+import IconButton from '../atoms/IconButton';
 
 const ProfileCard = ({imgSrc, id, name, age, description, toggleFavorite, short = false, favorite = false}) => {
-  const CardActionButton =  (
+  const CardActionButton = (
     (short && id)
       ?
       <RouterLink to={`/profile/${id}`}>
-        <button>See full profile</button>
+        <Button>See full profile</Button>
       </RouterLink>
       :
       <RouterLink to="/">
-        <button>Back</button>
+        <Button>Back</Button>
       </RouterLink>
   );
 
@@ -40,9 +42,11 @@ const ProfileCard = ({imgSrc, id, name, age, description, toggleFavorite, short 
       </div>
       <div>
         {CardActionButton}
-        <span className="favorite-button">
-          <i className="material-icons cursor-pointer" onClick={toggleFavorite}>{favorite ? 'star' : 'star_border'}</i>
-        </span>
+        <IconButton.Toggle onClick={toggleFavorite}
+                           isOn={favorite}
+                           onClass="star"
+                           OffClass="star_border"
+                           wrapperClass="favorite-button"/>
       </div>
     </div>
   )
